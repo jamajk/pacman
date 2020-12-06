@@ -1,0 +1,15 @@
+playerspeed-e=30
+playerspeed-m=20
+playerspeed-h=10
+ghostspeed-e=10
+ghostspeed-m=20
+ghostspeed-h=30
+nohearts-e=4
+nohearts-m=3
+nohearts-h=1
+noghosts-e=3
+noghosts-m=4
+noghosts-h=6
+nolevels=3
+width=800
+length=600
