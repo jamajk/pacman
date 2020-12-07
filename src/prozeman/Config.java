@@ -100,9 +100,9 @@ public class Config {
         numberOfHearts_easy=Integer.parseInt(config.getProperty("nohearts-e"));
         numberOfHearts_medium=Integer.parseInt(config.getProperty("nohearts-m"));
         numberOfHearts_hardcore=Integer.parseInt(config.getProperty("nohearts-h"));
-        numberOfHearts_easy=Integer.parseInt(config.getProperty("noghosts-e"));
-        numberOfHearts_medium=Integer.parseInt(config.getProperty("noghosts-m"));
-        numberOfHearts_hardcore=Integer.parseInt(config.getProperty("noghosts-h"));
+        numberOfGhosts_easy=Integer.parseInt(config.getProperty("noghosts-e"));
+        numberOfGhosts_medium=Integer.parseInt(config.getProperty("noghosts-m"));
+        numberOfGhosts_hardcore=Integer.parseInt(config.getProperty("noghosts-h"));
 
         numberOfLevels=Integer.parseInt(config.getProperty("nolevels"));
 
