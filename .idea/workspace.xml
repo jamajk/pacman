@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="54dcaa68-fe10-4508-b2eb-6d130405e696" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/proze20z_kucharczyk_majkowski.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/configs/config1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prozeman/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prozeman/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prozeman/MainScreenWindow.java" afterDir="false" />
+    <list default="true" id="54dcaa68-fe10-4508-b2eb-6d130405e696" name="Default Changelist" comment="poprawione zmienne">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prozeman/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/Config.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +19,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="ProjectId" id="1lFKAKltQwXchwwz1UUCEbJHXRz" />
   <component name="ProjectViewState">
@@ -79,6 +73,14 @@
       <option name="presentableId" value="Default" />
       <updated>1607187255691</updated>
     </task>
+    <task id="LOCAL-00001" summary="-m &quot;ładowanie config&quot;">
+      <created>1607290063165</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607290063165</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -92,5 +94,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="-m &quot;ładowanie config&quot;" />
+    <MESSAGE value="poprawione zmienne" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
