@@ -88,7 +88,7 @@ public class Config {
      * Metoda pozwalająca wczytać do programu zmienne konfigurowalne w pliku "config.txt"
      */
     static void loadConfig() throws IOException {
-        InputStream file = new FileInputStream("src/configs/config1.txt");
+        InputStream file = new FileInputStream("configs/config1.txt");
         Properties config = new Properties();
         config.load(file);
         playerSpeed_easy=Integer.parseInt(config.getProperty("playerspeed-e"));
@@ -120,7 +120,7 @@ public class Config {
     private static void loadMap(int mapNumber) {
         int[][] tempMap = new int[10][20];
         mapNumber += 1;
-        String pathName = "src/configs/map" + mapNumber + ".txt";
+        String pathName = "configs/map" + mapNumber + ".txt";
         File file = new File(pathName);
 
         try (Scanner scanner = new Scanner(file)) {
