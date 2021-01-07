@@ -1,5 +1,7 @@
 package prozeman;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.*;
 import java.util.Properties;
 import java.util.Scanner;
@@ -46,17 +48,17 @@ public class Config {
     /**
      * Zmienna opisująca ilość żyć podczas rozgrywki na łatwym poziomie trudności
      */
-    static int numberOfHearts_easy;
+    static int numberOfLives_easy;
 
     /**
      * Zmienna opisująca ilość żyć podczas rozgrywki na średnim poziomie trudności
      */
-    static int numberOfHearts_medium;
+    static int numberOfLives_medium;
 
     /**
      * Zmienna opisująca ilość żyć podczas rozgrywki na trudnym poziomie trudności
      */
-    static int numberOfHearts_hardcore;
+    static int numberOfLives_hardcore;
 
     /**
      * Zmienna opisująca liczbę duszków podczas rozgrywki na łatwym poziomie trudności
@@ -85,26 +87,40 @@ public class Config {
     static ArrayList<int[][]> maps;
 
     /**
+     * Zmienna przechowująca obrazki używany do wyświetlania PacMana
+     */
+    static Image pacImage;
+    static Image pacImageUp;
+    static Image pacImageDown;
+    static Image pacImageLeft;
+    static Image pacImageRight;
+
+    /**
+     * Zmienna przechowująca obrazek używany do wyświetlania duszków
+     */
+    static Image ghostImage;
+
+    /**
      * Metoda pozwalająca wczytać do programu zmienne konfigurowalne w pliku "config.txt"
      */
     static void loadConfig() throws IOException {
         InputStream file = new FileInputStream("configs/config1.txt");
         Properties config = new Properties();
         config.load(file);
-        playerSpeed_easy=Integer.parseInt(config.getProperty("playerspeed-e"));
-        playerSpeed_medium=Integer.parseInt(config.getProperty("playerspeed-m"));
-        playerSpeed_hardcore=Integer.parseInt(config.getProperty("playerspeed-h"));
-        ghostSpeed_easy=Integer.parseInt(config.getProperty("ghostspeed-e"));
-        ghostSpeed_medium=Integer.parseInt(config.getProperty("ghostspeed-m"));
-        ghostSpeed_hardcore=Integer.parseInt(config.getProperty("ghostspeed-h"));
-        numberOfHearts_easy=Integer.parseInt(config.getProperty("nohearts-e"));
-        numberOfHearts_medium=Integer.parseInt(config.getProperty("nohearts-m"));
-        numberOfHearts_hardcore=Integer.parseInt(config.getProperty("nohearts-h"));
-        numberOfGhosts_easy=Integer.parseInt(config.getProperty("noghosts-e"));
-        numberOfGhosts_medium=Integer.parseInt(config.getProperty("noghosts-m"));
-        numberOfGhosts_hardcore=Integer.parseInt(config.getProperty("noghosts-h"));
+        playerSpeed_easy = Integer.parseInt(config.getProperty("playerspeed-e"));
+        playerSpeed_medium = Integer.parseInt(config.getProperty("playerspeed-m"));
+        playerSpeed_hardcore = Integer.parseInt(config.getProperty("playerspeed-h"));
+        ghostSpeed_easy = Integer.parseInt(config.getProperty("ghostspeed-e"));
+        ghostSpeed_medium = Integer.parseInt(config.getProperty("ghostspeed-m"));
+        ghostSpeed_hardcore = Integer.parseInt(config.getProperty("ghostspeed-h"));
+        numberOfLives_easy = Integer.parseInt(config.getProperty("nohearts-e"));
+        numberOfLives_medium = Integer.parseInt(config.getProperty("nohearts-m"));
+        numberOfLives_hardcore = Integer.parseInt(config.getProperty("nohearts-h"));
+        numberOfGhosts_easy = Integer.parseInt(config.getProperty("noghosts-e"));
+        numberOfGhosts_medium = Integer.parseInt(config.getProperty("noghosts-m"));
+        numberOfGhosts_hardcore = Integer.parseInt(config.getProperty("noghosts-h"));
 
-        numberOfLevels=Integer.parseInt(config.getProperty("nolevels"));
+        numberOfLevels = Integer.parseInt(config.getProperty("nolevels"));
 
         file.close();
 
@@ -112,13 +128,29 @@ public class Config {
         for (int n = 0; n < numberOfLevels; n++) {
             loadMap(n);
         }
+        loadImages();
+    }
+    /**
+     * Metoda wczytująca obrazki postaci do gry
+     **/
+    private static void loadImages() {
+        try {
+            pacImage = ImageIO.read(new FileInputStream("img/pacman.png"));
+            pacImageUp = ImageIO.read(new FileInputStream("img/up.gif"));
+            pacImageDown = ImageIO.read(new FileInputStream("img/down.gif"));
+            pacImageLeft = ImageIO.read(new FileInputStream("img/left.gif"));
+            pacImageRight = ImageIO.read(new FileInputStream("img/right.gif"));
+            ghostImage = ImageIO.read(new FileInputStream("img/ghost.gif"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     /**
      * Metoda pozwalająca wczytać do programu informacje o pojedynczej planszy z pliku "map%.txt",
      * gdzie % oznacza numer wczytywanego poziomu
      */
     private static void loadMap(int mapNumber) {
-        int[][] tempMap = new int[10][20];
+        int[][] tempMap = new int[20][20];
         mapNumber += 1;
         String pathName = "configs/map" + mapNumber + ".txt";
         File file = new File(pathName);
@@ -149,9 +181,9 @@ public class Config {
         System.out.println(ghostSpeed_medium);
         System.out.println(ghostSpeed_hardcore);
 
-        System.out.println(numberOfHearts_easy);
-        System.out.println(numberOfHearts_medium);
-        System.out.println(numberOfHearts_hardcore);
+        System.out.println(numberOfLives_easy);
+        System.out.println(numberOfLives_medium);
+        System.out.println(numberOfLives_hardcore);
 
         System.out.println(numberOfGhosts_easy);
         System.out.println(numberOfGhosts_medium);

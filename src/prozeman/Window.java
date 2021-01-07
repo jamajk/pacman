@@ -10,11 +10,11 @@ public class Window extends JFrame {
     public Window() {
         super("PROZEman");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1200, 800);
+        setSize(800, 800);
         setLocationRelativeTo(null);
 
         //setLayout(layout);
-        add(new MainScreenWindow());
+        //add(new MainScreenWindow());
         add(new GameWindow());
         //layout.first(contentPane);
         setVisible(true);

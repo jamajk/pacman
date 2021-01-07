@@ -2,39 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54dcaa68-fe10-4508-b2eb-6d130405e696" name="Default Changelist" comment="poprawione zmienne">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/Logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/AbstractLayout.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/DimensionInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/GridConstraints.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/GridLayoutManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/HorizontalInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/LayoutState.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/Spacer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/SupportCode.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/Util.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/VerticalInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/GameWindow.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/Window.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prozeman/GameUIButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prozeman/GameWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prozeman/Window.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/down.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/ghost.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/left.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pacman.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/right.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/up.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/configs/config1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/configs/config1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/configs/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/configs/map1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/configs/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/configs/map2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/configs/map3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/configs/map3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/configs/map1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/configs/map2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/map3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/configs/map3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/GameWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/GameWindow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/MainScreenWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/MainScreenWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/config1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/map1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/map2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/map3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/Window.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/prozeman/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prozeman/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/GameWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/prozeman/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prozeman/MainScreenWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/MainScreenWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prozeman/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,10 +54,10 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kmsk1\Desktop\proze20z_kucharczyk_majkowski\img" />
       <recent name="C:\Users\kmsk1\Desktop\proze20z_kucharczyk_majkowski" />
       <recent name="C:\Users\kmsk1\Desktop\proze20z_kucharczyk_majkowski\configs2" />
       <recent name="C:\Users\kmsk1\Desktop\proze20z_kucharczyk_majkowski\configs" />
-      <recent name="C:\Users\kmsk1\Desktop\proze20z_kucharczyk_majkowski\img" />
     </key>
   </component>
   <component name="RunManager">
@@ -134,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607371717468</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="main menu">
+      <created>1609954898159</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1609954898159</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,6 +147,7 @@
     <MESSAGE value="poprawione zmienne" />
     <MESSAGE value="JavaDoc Config" />
     <MESSAGE value="num of ghosts zmienna fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="num of ghosts zmienna fix" />
+    <MESSAGE value="main menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="main menu" />
   </component>
 </project>
