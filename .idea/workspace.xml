@@ -2,30 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54dcaa68-fe10-4508-b2eb-6d130405e696" name="Default Changelist" comment="poprawione zmienne">
-      <change afterPath="$PROJECT_DIR$/src/prozeman/Character.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prozeman/Direction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prozeman/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prozeman/MapBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prozeman/Pacman.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/configs/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/configs/map1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/AbstractLayout.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/DimensionInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/GridConstraints.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/GridLayoutManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/HorizontalInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/Spacer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/com/intellij/uiDesigner/core/VerticalInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/GameWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/MainScreenWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/proze20z_kucharczyk_majkowski/prozeman/Window.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prozeman/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/prozeman/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prozeman/MapBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/MapBlock.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610013996461</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="nowe klasy">
+      <created>1612003130371</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1612003130371</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,7 +149,8 @@
     <MESSAGE value="num of ghosts zmienna fix" />
     <MESSAGE value="main menu" />
     <MESSAGE value="podstawowy ruch" />
-    <option name="LAST_COMMIT_MESSAGE" value="podstawowy ruch" />
+    <MESSAGE value="nowe klasy" />
+    <option name="LAST_COMMIT_MESSAGE" value="nowe klasy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

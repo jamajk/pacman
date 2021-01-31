@@ -33,8 +33,8 @@ public class MapBlock extends Entity {
                 this.type = Type.EMPTY;
                 break;
         }
-        gridX = i;
-        gridY = j;
+        gridX = j;
+        gridY = i;
     }
 
     public int getGridX() { return gridX; }

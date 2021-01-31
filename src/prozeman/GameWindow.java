@@ -44,7 +44,7 @@ public class GameWindow extends JPanel implements ActionListener {
         pacman = new Character(cellSize);//new Pacman(cellSize);
         ghost = new Character(cellSize);
 
-        imgPac = Config.pacImage.getScaledInstance(cellSize, cellSize, 0);
+        imgPac = Config.pacImage.getScaledInstance(pacman.size, pacman.size, 0);
         //difficulty easy
     }
 
@@ -57,71 +57,44 @@ public class GameWindow extends JPanel implements ActionListener {
         }
     }
 
-    public void checkForEatenPoints() {
-        int y = (int) Math.ceil((pacman.getCenterX() / cellSize) - (boardRectIncX / cellSize));
-        int x = (int) Math.ceil((pacman.getCenterY() / cellSize) - (boardRectIncY / cellSize));
-        if (mapDecoded[x][y].getType() == MapBlock.Type.POINT) {
-            mapDecoded[x][y].eatPoint();
+    public void checkEatenPoints() {
+        int x = (int) Math.ceil((pacman.getCenterX() - boardRectIncX) / cellSize);
+        int y = (int) Math.ceil((pacman.getCenterY() - boardRectIncY) / cellSize);
+        if (mapDecoded[y][x].getType() == MapBlock.Type.POINT) {
+            mapDecoded[y][x].eatPoint();
         }
     }
 
     public void checkForWall() {
-        int y = (int) Math.ceil((pacman.getCenterX() / cellSize) - (boardRectIncX / cellSize));
-        int x = (int) Math.ceil((pacman.getCenterY() / cellSize) - (boardRectIncY / cellSize));
+        //zamiana położenia postaci ze współrzędnych całego frame'a na współrzędne mapy [0,20]
+        int x = (int) Math.ceil((pacman.getCenterX() - boardRectIncX) / cellSize);
+        int y = (int) Math.ceil((pacman.getCenterY() - boardRectIncY) / cellSize);
+
         MapBlock block;
         switch (direction) {
             case LEFT:
-                block = mapDecoded[x - 1][y];
-                if (block.getType() == MapBlock.Type.WALL) {
-                    System.out.printf("%d, %d wall, %d %d coords, wall to the left\n", x - 1, y, x, y);
-                    if (isTouching(pacman, block)) {
-                        direction = Direction.STOP;
-                        pacman.stop();
-                        imgPac = Config.pacImage.getScaledInstance(cellSize, cellSize, 0);
-                    }
-                    pacman.stop();
-                }
+                block = mapDecoded[y][x - 1];
                 break;
             case RIGHT:
-                block = mapDecoded[x + 1][y];
-                if (block.getType() == MapBlock.Type.WALL) {
-                    System.out.printf("%d, %d wall, %d %d coords, wall to the right\n", x + 1, y, x, y);
-                    if (isTouching(pacman, block)) {
-                        direction = Direction.STOP;
-                        pacman.stop();
-                        imgPac = Config.pacImage.getScaledInstance(cellSize, cellSize, 0);
-                    }
-                    pacman.stop();
-                }
+                block = mapDecoded[y][x + 1];
                 break;
             case UP:
-                block = mapDecoded[x][y - 1];
-                if (block.getType() == MapBlock.Type.WALL) {
-                    System.out.printf("%d, %d wall, %d %d coords, wall up\n", x, y - 1, x, y);
-                    if (isTouching(pacman, block)) {
-                        direction = Direction.STOP;
-                        pacman.stop();
-                        imgPac = Config.pacImage.getScaledInstance(cellSize, cellSize, 0);
-                    }
-                    pacman.stop();
-                }
+                block = mapDecoded[y - 1][x];
                 break;
             case DOWN:
-                block = mapDecoded[x][y + 1];
-                if (block.getType() == MapBlock.Type.WALL) {
-                    System.out.printf("%d, %d wall, %d %d coords, wall down\n", x, y + 1, x, y);
-                    if (isTouching(pacman, block)) {
-                        direction = Direction.STOP;
-                        pacman.stop();
-                        imgPac = Config.pacImage.getScaledInstance(cellSize, cellSize, 0);
-                    }
-                    pacman.stop();
-                }
-                break;
-            case STOP:
+                block = mapDecoded[y + 1][x];
                 break;
             default:
-                break;
+                return;
+        }
+        if (block.getType() == MapBlock.Type.WALL) {
+            System.out.printf("%d %d wall, %d %d coords\n", block.getGridX(), block.getGridY(), x, y);
+            if (isTouching(pacman, block)) {
+                System.out.println("Touching wall");
+                direction = Direction.STOP;
+                pacman.stop();
+                imgPac = Config.pacImage.getScaledInstance(pacman.size, pacman.size, 0);
+            }
         }
     }
 
@@ -130,9 +103,9 @@ public class GameWindow extends JPanel implements ActionListener {
         pacman.move(direction, pacSpeed / 10);
         if (isTouching(pacman, ghost)) {
             pacman.stop();
-            imgPac = Config.pacImage.getScaledInstance(cellSize, cellSize, 0);
+            imgPac = Config.pacImage.getScaledInstance(pacman.size, pacman.size, 0);
         }
-        checkForEatenPoints();
+        checkEatenPoints();
         checkForWall();
         repaint();
         try {
@@ -154,15 +127,15 @@ public class GameWindow extends JPanel implements ActionListener {
         Rectangle boardRect = new Rectangle((screenWidth / 2) - 300, (screenHeight / 2) - 300, 600, 600);
         g2d.fill(boardRect);
 
-        int cellWidth = boardRect.width / 20;
-        int cellHeight = boardRect.height / 20;
+        int cellWidth = cellSize;//boardRect.width / 20;
+        int cellHeight = cellSize;//boardRect.height / 20;
 
         boardRectIncX = boardRect.x;
         boardRectIncY = boardRect.y;
 
         if (!playing) {
-            int x = boardRect.x;
-            int y = boardRect.y;
+            int x = boardRectIncX;
+            int y = boardRectIncY;
 
             //narysowanie mapy
             for (int i = 0; i < 20; i++) {
@@ -171,33 +144,29 @@ public class GameWindow extends JPanel implements ActionListener {
                         case WALL:
                             g2d.setColor(Color.blue);
                             g2d.fillRect(x, y, cellWidth, cellHeight);
-                            mapDecoded[i][j].setCoords(x + 15, y + 15);
                             break;
                         case EMPTY:
                             g2d.setColor(Color.black);
                             g2d.fillRect(x, y, cellWidth, cellHeight);
-                            mapDecoded[i][j].setCoords(x + 15, y + 15);
                             break;
                         case GHOSTSPAWN:
                             g2d.setColor(Color.black);
                             g2d.fillRect(x, y, cellWidth, cellHeight);
                             ghost.setInitialStartingLocation(x, y);
-                            mapDecoded[i][j].setCoords(x + 15, y + 15);
                             break;
                         case PACSPAWN:
                             g2d.setColor(Color.black);
                             g2d.fillRect(x, y, cellWidth, cellHeight);
                             pacman.setInitialStartingLocation(x, y);
-                            mapDecoded[i][j].setCoords(x + 15, y + 15);
                             break;
                         case POINT:
                             g2d.setColor(Color.black);
                             g2d.fillRect(x, y, cellWidth, cellHeight);
                             g2d.setColor(Color.white);
                             g2d.fillOval(x + (cellWidth / 2) - 4, y + (cellHeight / 2) - 4, 8, 8);
-                            mapDecoded[i][j].setCoords(x + 15, y + 15);
                             break;
                     }
+                    mapDecoded[i][j].setCoords(x, y);
                     x += cellWidth;
                 }
                 x = boardRect.x;
@@ -223,6 +192,7 @@ public class GameWindow extends JPanel implements ActionListener {
     private void moveGhost() {
         int move = new Random().nextInt(4) + 1;
         int speed = Config.ghostSpeed_easy;
+        ghost.start();
         switch(move) {
             case 1: //lewo
                 ghost.move(Direction.LEFT, speed);
@@ -260,23 +230,23 @@ public class GameWindow extends JPanel implements ActionListener {
                 switch(key) {
                     case KeyEvent.VK_LEFT:
                         direction = Direction.LEFT;
-                        imgPac = Config.pacImageLeft.getScaledInstance(cellSize, cellSize, 0);
+                        imgPac = Config.pacImageLeft.getScaledInstance(pacman.size, pacman.size, 0);
                         break;
                     case KeyEvent.VK_RIGHT:
                         direction = Direction.RIGHT;
-                        imgPac = Config.pacImageRight.getScaledInstance(cellSize, cellSize, 0);
+                        imgPac = Config.pacImageRight.getScaledInstance(pacman.size, pacman.size, 0);
                         break;
                     case KeyEvent.VK_UP:
                         direction = Direction.UP;
-                        imgPac = Config.pacImageUp.getScaledInstance(cellSize, cellSize, 0);
+                        imgPac = Config.pacImageUp.getScaledInstance(pacman.size, pacman.size, 0);
                         break;
                     case KeyEvent.VK_DOWN:
                         direction = Direction.DOWN;
-                        imgPac = Config.pacImageDown.getScaledInstance(cellSize, cellSize, 0);
+                        imgPac = Config.pacImageDown.getScaledInstance(pacman.size, pacman.size, 0);
                         break;
                     case KeyEvent.VK_CONTROL:
                         direction = Direction.STOP;
-                        imgPac = Config.pacImage.getScaledInstance(cellSize, cellSize, 0);
+                        imgPac = Config.pacImage.getScaledInstance(pacman.size, pacman.size, 0);
                         break;
                     default:
                         break;
