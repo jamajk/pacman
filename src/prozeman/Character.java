@@ -1,18 +1,18 @@
 package prozeman;
 
 public class Character extends Entity {
-    private boolean canMove = false;
-    private boolean isMoving = false;
+    protected boolean canMove = false;
+    protected boolean isMoving = false;
 
-    private Direction dir;
+    protected Direction direction;
 
     public Character(int size) {
         super(size);
     }
 
-    public void move(Direction direction, int speed) {
+    public void move(int speed) {
         if (isMoving) {
-            switch (direction) {
+            switch (this.direction) {
                 case UP:
                     y -= speed;
                     break;
@@ -43,5 +43,13 @@ public class Character extends Entity {
             this.y = startingY;
             canMove = true;
         }
+    }
+
+    public void setDirection(Direction newDir) {
+        this.direction = newDir;
+    }
+
+    public Direction getDirection() {
+        return direction;
     }
 }

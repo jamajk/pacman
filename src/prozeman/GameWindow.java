@@ -21,13 +21,10 @@ public class GameWindow extends JPanel implements ActionListener {
     private int boardRectIncX;
     private int boardRectIncY;
 
-    private Character pacman;
-    private Character ghost;
+    private Pacman pacman;
+    private Ghost[] ghosts;
 
     private int pacSpeed;
-    private Direction direction = Direction.STOP;
-
-    private Image imgPac;
 
     public GameWindow() {
         try {
@@ -41,10 +38,13 @@ public class GameWindow extends JPanel implements ActionListener {
         setBackground(Color.darkGray);
         map = Config.maps.get(0);
         decodeMap();
-        pacman = new Character(cellSize);//new Pacman(cellSize);
-        ghost = new Character(cellSize);
+        pacman = new Pacman(cellSize);
+        ghosts = new Ghost[Config.numberOfGhosts_easy];
+        for (int i = 0; i < ghosts.length; i++) {
+            ghosts[i] = new Ghost(cellSize);
+        }
 
-        imgPac = Config.pacImage.getScaledInstance(pacman.size, pacman.size, 0);
+        pacman.setDirection(Direction.STOP);
         //difficulty easy
     }
 
@@ -65,13 +65,13 @@ public class GameWindow extends JPanel implements ActionListener {
         }
     }
 
-    public void checkForWall() {
+    public void checkForWall(Character walker) {
         //zamiana położenia postaci ze współrzędnych całego frame'a na współrzędne mapy [0,20]
-        int x = (int) Math.ceil((pacman.getCenterX() - boardRectIncX) / cellSize);
-        int y = (int) Math.ceil((pacman.getCenterY() - boardRectIncY) / cellSize);
+        int x = (int) Math.ceil((walker.getCenterX() - boardRectIncX) / cellSize);
+        int y = (int) Math.ceil((walker.getCenterY() - boardRectIncY) / cellSize);
 
         MapBlock block;
-        switch (direction) {
+        switch (walker.getDirection()) {
             case LEFT:
                 block = mapDecoded[y][x - 1];
                 break;
@@ -89,24 +89,26 @@ public class GameWindow extends JPanel implements ActionListener {
         }
         if (block.getType() == MapBlock.Type.WALL) {
             System.out.printf("%d %d wall, %d %d coords\n", block.getGridX(), block.getGridY(), x, y);
-            if (isTouching(pacman, block)) {
+            if (isTouching(walker, block)) {
                 System.out.println("Touching wall");
-                direction = Direction.STOP;
-                pacman.stop();
-                imgPac = Config.pacImage.getScaledInstance(pacman.size, pacman.size, 0);
+                walker.setDirection(Direction.STOP);
+                walker.stop();
             }
         }
     }
 
     public void animation() {
-        moveGhost();
-        pacman.move(direction, pacSpeed / 10);
-        if (isTouching(pacman, ghost)) {
-            pacman.stop();
-            imgPac = Config.pacImage.getScaledInstance(pacman.size, pacman.size, 0);
+        for (int i = 0; i < ghosts.length; i++) {
+            moveGhost(ghosts[i]);
+            checkForWall(ghosts[i]);
+            if (isTouching(pacman, ghosts[i])) {
+                pacman.stop();
+            }
         }
+        pacman.move(pacSpeed / 10);
         checkEatenPoints();
-        checkForWall();
+        checkForWall(pacman);
+
         repaint();
         try {
             Thread.sleep(10);
@@ -152,7 +154,9 @@ public class GameWindow extends JPanel implements ActionListener {
                         case GHOSTSPAWN:
                             g2d.setColor(Color.black);
                             g2d.fillRect(x, y, cellWidth, cellHeight);
-                            ghost.setInitialStartingLocation(x, y);
+                            for (int k = 0; k < ghosts.length; k++) {
+                                ghosts[k].setInitialStartingLocation(x, y);
+                            }
                             break;
                         case PACSPAWN:
                             g2d.setColor(Color.black);
@@ -174,41 +178,42 @@ public class GameWindow extends JPanel implements ActionListener {
             }
         }
         //rysowanie duszków
-       /* for (int i = 0; i < Config.numberOfGhosts_easy; i++) {
-            imgGhost[i] = Config.ghostImage.getScaledInstance(cellWidth, cellHeight, 0);
-            g2d.drawImage(imgGhost[i], ghostSpawnX, ghostSpawnY, null);
-        }*/
-        Image imgGhost = Config.ghostImage.getScaledInstance(cellWidth, cellHeight, 0);
-        g2d.drawImage(imgGhost, ghost.getX(), ghost.getY(), null);
-
+        for (int i = 0; i < ghosts.length; i++) {
+            Image imgGhost = Config.ghostImage.getScaledInstance(cellWidth, cellHeight, 0);
+            g2d.drawImage(imgGhost, ghosts[i].getX(), ghosts[i].getY(), null);
+        }
 
         //rysowanie pacmana
-        g2d.drawImage(imgPac, pacman.getX(), pacman.getY(), null);
+        g2d.drawImage(pacman.getImage(), pacman.getX(), pacman.getY(), null);
         g2d.dispose();
 
         animation();
     }
 
-    private void moveGhost() {
+    private void moveGhost(Ghost ghost) {
         int move = new Random().nextInt(4) + 1;
-        int speed = Config.ghostSpeed_easy;
-        ghost.start();
-        switch(move) {
-            case 1: //lewo
-                ghost.move(Direction.LEFT, speed);
-                break;
-            case 2: //prawo
-                ghost.move(Direction.RIGHT, speed);
-                break;
-            case 3: //góra
-                ghost.move(Direction.UP, speed);
-                break;
-            case 4: //dół
-                ghost.move(Direction.DOWN, speed);
-                break;
-            default:
-                break;
+        int speed = Config.ghostSpeed_easy / 5;
+        if (ghost.getDirection() == Direction.STOP) {
+            ghost.start();
+            switch(move) {
+                case 1: //lewo
+                    ghost.setDirection(Direction.LEFT);
+                    break;
+                case 2: //prawo
+                    ghost.setDirection(Direction.RIGHT);
+                    break;
+                case 3: //góra
+                    ghost.setDirection(Direction.UP);
+                    break;
+                case 4: //dół
+                    ghost.setDirection(Direction.DOWN);
+                    break;
+                default:
+                    break;
+            }
         }
+        ghost.move(speed);
+
     }
 
     private boolean isTouching(Entity first, Entity second) {
@@ -229,24 +234,19 @@ public class GameWindow extends JPanel implements ActionListener {
                 pacman.start();
                 switch(key) {
                     case KeyEvent.VK_LEFT:
-                        direction = Direction.LEFT;
-                        imgPac = Config.pacImageLeft.getScaledInstance(pacman.size, pacman.size, 0);
+                        pacman.setDirection(Direction.LEFT);
                         break;
                     case KeyEvent.VK_RIGHT:
-                        direction = Direction.RIGHT;
-                        imgPac = Config.pacImageRight.getScaledInstance(pacman.size, pacman.size, 0);
+                        pacman.setDirection(Direction.RIGHT);
                         break;
                     case KeyEvent.VK_UP:
-                        direction = Direction.UP;
-                        imgPac = Config.pacImageUp.getScaledInstance(pacman.size, pacman.size, 0);
+                        pacman.setDirection(Direction.UP);
                         break;
                     case KeyEvent.VK_DOWN:
-                        direction = Direction.DOWN;
-                        imgPac = Config.pacImageDown.getScaledInstance(pacman.size, pacman.size, 0);
+                        pacman.setDirection(Direction.DOWN);
                         break;
                     case KeyEvent.VK_CONTROL:
-                        direction = Direction.STOP;
-                        imgPac = Config.pacImage.getScaledInstance(pacman.size, pacman.size, 0);
+                        pacman.setDirection(Direction.STOP);
                         break;
                     default:
                         break;
