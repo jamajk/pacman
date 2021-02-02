@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54dcaa68-fe10-4508-b2eb-6d130405e696" name="Default Changelist" comment="poprawione zmienne">
-      <change afterPath="$PROJECT_DIR$/src/prozeman/HighScores.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/configs/config1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/configs/config1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prozeman/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prozeman/DiffSelectScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/DiffSelectScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prozeman/GameLostScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/GameLostScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/prozeman/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prozeman/GameWonScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/GameWonScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prozeman/MainScreenWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/MainScreenWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prozeman/pWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/pWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612241197426</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="wygranie lub przegranie gry">
+      <created>1612246558808</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1612246558808</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -209,7 +209,8 @@
     <MESSAGE value="działające odmierzanie czasu" />
     <MESSAGE value="wybór poziomu trudności" />
     <MESSAGE value="działające połączenie menu i gry" />
-    <option name="LAST_COMMIT_MESSAGE" value="działające połączenie menu i gry" />
+    <MESSAGE value="wygranie lub przegranie gry" />
+    <option name="LAST_COMMIT_MESSAGE" value="wygranie lub przegranie gry" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
