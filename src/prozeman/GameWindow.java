@@ -73,7 +73,7 @@ public class GameWindow extends JPanel {
         this.getInputMap(IFW).put(KeyStroke.getKeyStroke("DOWN"), Direction.DOWN);
         this.getInputMap(IFW).put(KeyStroke.getKeyStroke("LEFT"), Direction.LEFT);
         this.getInputMap(IFW).put(KeyStroke.getKeyStroke("RIGHT"), Direction.RIGHT);
-        this.getInputMap(IFW).put(KeyStroke.getKeyStroke("CONTROL"), Direction.STOP);
+        this.getInputMap(IFW).put(KeyStroke.getKeyStroke("control CONTROL"), Direction.STOP);
         this.getInputMap(IFW).put(KeyStroke.getKeyStroke("SPACE"), "START");
         this.getInputMap(IFW).put(KeyStroke.getKeyStroke("P"), "PAUSE");
         this.getInputMap(IFW).put(KeyStroke.getKeyStroke("ESCAPE"), "PAUSE");

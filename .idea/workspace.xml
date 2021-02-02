@@ -3,13 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="54dcaa68-fe10-4508-b2eb-6d130405e696" name="Default Changelist" comment="poprawione zmienne">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/configs/map1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/configs/map2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/map3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/configs/map3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prozeman/DiffSelectScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/DiffSelectScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/down.gif" beforeDir="false" afterPath="$PROJECT_DIR$/img/down.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/left.gif" beforeDir="false" afterPath="$PROJECT_DIR$/img/left.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/pacman.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/pacman.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/right.gif" beforeDir="false" afterPath="$PROJECT_DIR$/img/right.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/up.gif" beforeDir="false" afterPath="$PROJECT_DIR$/img/up.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prozeman/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/prozeman/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prozeman/MapBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/MapBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prozeman/pWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/pWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prozeman/Pacman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/Pacman.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612248538401</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="dodany bonus na mapie">
+      <created>1612251047664</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1612251047664</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -223,7 +231,8 @@
     <MESSAGE value="działające połączenie menu i gry" />
     <MESSAGE value="wygranie lub przegranie gry" />
     <MESSAGE value="poprawny sposób animacji" />
-    <option name="LAST_COMMIT_MESSAGE" value="poprawny sposób animacji" />
+    <MESSAGE value="dodany bonus na mapie" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodany bonus na mapie" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

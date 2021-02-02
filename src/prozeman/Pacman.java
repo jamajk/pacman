@@ -15,19 +15,19 @@ public class Pacman extends Character {
         super.move(speed);
         switch (this.direction) {
             case UP:
-                image = Config.pacImageUp.getScaledInstance(size, size, 0);
+                image = Config.pacImageUp;
                 break;
             case DOWN:
-                image = Config.pacImageDown.getScaledInstance(size, size, Image.SCALE_DEFAULT);
+                image = Config.pacImageDown;
                 break;
             case LEFT:
-                image = Config.pacImageLeft.getScaledInstance(size, size, Image.SCALE_DEFAULT);
+                image = Config.pacImageLeft;
                 break;
             case RIGHT:
-                image = Config.pacImageRight.getScaledInstance(size, size, 0);
+                image = Config.pacImageRight;
                 break;
             case STOP:
-                image = Config.pacImage.getScaledInstance(size, size, 0);
+                image = Config.pacImage;
         }
     }
 

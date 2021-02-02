@@ -148,10 +148,10 @@ public class Config {
     private static void loadImages() {
         try {
             pacImage = ImageIO.read(new FileInputStream("img/pacman.png"));
-            pacImageUp = ImageIO.read(new FileInputStream("img/up.gif"));
-            pacImageDown = ImageIO.read(new FileInputStream("img/down.gif"));
-            pacImageLeft = ImageIO.read(new FileInputStream("img/left.gif"));
-            pacImageRight = ImageIO.read(new FileInputStream("img/right.gif"));
+            pacImageUp = new ImageIcon("img/up.gif").getImage();
+            pacImageDown = new ImageIcon("img/down.gif").getImage();
+            pacImageLeft = new ImageIcon("img/left.gif").getImage();
+            pacImageRight = new ImageIcon("img/right.gif").getImage();
             ghostImage = ImageIO.read(new FileInputStream("img/ghost.gif"));
             heartImage = ImageIO.read(new FileInputStream("img/heart.png"));
         } catch (IOException e) {
