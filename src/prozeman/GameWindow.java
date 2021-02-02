@@ -28,7 +28,7 @@ public class GameWindow extends JPanel implements ActionListener {
     private int pacSpeed;
 
     private long startTime; //nanoseconds
-    private long endTime; //nanoseconds
+    private long prevTime;
     private long elapsedTime; //nanoseconds
 
     /**
@@ -38,6 +38,7 @@ public class GameWindow extends JPanel implements ActionListener {
         setFocusable(true);
         requestFocusInWindow();
         elapsedTime = 0;
+        prevTime = 0;
         pellets = 0;
         level = 0;
         playing = false;
@@ -180,6 +181,7 @@ public class GameWindow extends JPanel implements ActionListener {
     }
 
     private void pause() {
+        prevTime = elapsedTime;
         pacman.stop();
         pacman.setDirection(Direction.STOP);
         for (Ghost ghost : ghosts) {
@@ -290,7 +292,7 @@ public class GameWindow extends JPanel implements ActionListener {
 
         //rysowanie czasu gry
         if (playing) {
-            elapsedTime = (System.nanoTime() - startTime) / 1_000_000_000;
+            elapsedTime = prevTime + (System.nanoTime() - startTime) / 1_000_000_000;
         }
         String time = Integer.toString(Math.toIntExact(elapsedTime));
         g2d.drawString("Time: " + time + "s", 60, hy + 25);
