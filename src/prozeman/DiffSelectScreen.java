@@ -11,8 +11,10 @@ public class DiffSelectScreen extends JPanel {
 
         setBackground(Color.darkGray);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setAlignmentX(CENTER_ALIGNMENT);
 
         JLabel textLabel1 = new JLabel();
+        textLabel1.setAlignmentX(CENTER_ALIGNMENT);
         textLabel1.setFont(Config.fontLarge);
         textLabel1.setForeground(Color.lightGray);
         textLabel1.setText("Select Difficulty");

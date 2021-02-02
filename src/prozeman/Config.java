@@ -110,7 +110,7 @@ public class Config {
      * Zmienne przechowujące czcionkę używaną do wyświetlania napisów w grze
      */
     static Font fontLarge = new Font("Courier New", Font.BOLD, 24);
-    static Font fontSmall = new Font("Courier New", Font.BOLD, 14);
+    static Font fontSmall = new Font("Courier New", Font.BOLD, 18);
 
     /**
      * Metoda pozwalająca wczytać do programu zmienne konfigurowalne w pliku "config.txt"

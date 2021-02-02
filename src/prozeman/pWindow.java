@@ -35,4 +35,13 @@ public class pWindow extends JFrame {
 
     public void toMain() { layout.show(content, "Main Menu"); }
 
+    public void gameWon(int score) {
+        content.add(new GameWonScreen(this, score), "Game Won");
+        layout.show(content, "Game Won");
+    }
+
+    public void gameLost(int dif) {
+        content.add(new GameLostScreen(this, dif), "Game Lost");
+        layout.show(content, "Game Lost");
+    }
 }

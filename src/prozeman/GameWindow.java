@@ -3,13 +3,10 @@ package prozeman;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.Random;
 
-public class GameWindow extends JPanel /*implements ActionListener*/ {
+public class GameWindow extends JPanel {
     private int difficulty;
     private boolean playing;
     private int lives;
@@ -18,6 +15,7 @@ public class GameWindow extends JPanel /*implements ActionListener*/ {
     private int cellSize = 30;
     private int boardRectIncX;
     private int boardRectIncY;
+    private pWindow parent;
 
     private Pacman pacman;
     private Ghost[] ghosts;
@@ -34,10 +32,13 @@ public class GameWindow extends JPanel /*implements ActionListener*/ {
 
     private int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
 
+    private int finalScore;
+
     /**
      * Konstruktor klasy GameWindow
      */
     public GameWindow(pWindow parent, int difficulty) {
+        this.parent = parent;
         this.difficulty = difficulty;
         setFocusable(true);
         requestFocusInWindow();
@@ -204,7 +205,24 @@ public class GameWindow extends JPanel /*implements ActionListener*/ {
     private void passedLevel() {
         pellets = 1;
         if (level >= Config.numberOfLevels - 1) {
+            int n_d;
+            switch (difficulty) {
+                case 1:
+                    n_d = 100;
+                    break;
+                case 2:
+                    n_d = 200;
+                    break;
+                case 3:
+                    n_d = 300;
+                    break;
+                default:
+                    n_d = 100;
+                    break;
+            }
+            finalScore = (lives * n_d) / (int) elapsedTime;
             System.out.println("KONIEC GRY");
+            parent.gameWon(finalScore);
         } else if (!playing) {
             level++;
             map = Config.maps.get(level);
@@ -219,9 +237,7 @@ public class GameWindow extends JPanel /*implements ActionListener*/ {
     private void loseLife() {
         lives--;
         if (lives <= 0) {
-            //you lost
-            System.out.println("KONIEC GRY");
-            pause();
+            parent.gameLost(difficulty);
             return;
         }
         pacman.resetMovement();
@@ -450,7 +466,6 @@ public class GameWindow extends JPanel /*implements ActionListener*/ {
         @Override
         public void actionPerformed(ActionEvent e) { ;
             int key = e.getID();
-            System.out.println("lol");
             if (playing) {
                 pacman.start();
                 pacman.setDirection(direction);
@@ -475,7 +490,6 @@ public class GameWindow extends JPanel /*implements ActionListener*/ {
                         playing = true;
                         startTime = System.nanoTime();
                     }
-                    System.out.println("asd");
                     break;
                 case "PAUSE":
                     pause();

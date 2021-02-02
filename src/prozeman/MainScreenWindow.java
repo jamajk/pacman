@@ -41,9 +41,6 @@ public class MainScreenWindow extends JPanel {
 
         newGameButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("New Game");
-                //parent.layout.next(parent.content);//layout.show(parent.content, "gameWindow");
-                //parent.game();
                 parent.diffSelect();
             }
         });
@@ -56,7 +53,6 @@ public class MainScreenWindow extends JPanel {
 
         howToPlayButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("How to play");
                 parent.howToPlay();
             }
         });
