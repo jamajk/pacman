@@ -107,9 +107,10 @@ public class Config {
     static Image heartImage;
 
     /**
-     * Zmienna przechowująca czcionkę używaną do wyświetlania napisów w grze
+     * Zmienne przechowujące czcionkę używaną do wyświetlania napisów w grze
      */
-    static Font font = new Font("Courier New", Font.BOLD, 24);
+    static Font fontLarge = new Font("Courier New", Font.BOLD, 24);
+    static Font fontSmall = new Font("Courier New", Font.BOLD, 14);
 
     /**
      * Metoda pozwalająca wczytać do programu zmienne konfigurowalne w pliku "config.txt"

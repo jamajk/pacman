@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54dcaa68-fe10-4508-b2eb-6d130405e696" name="Default Changelist" comment="poprawione zmienne">
+      <change afterPath="$PROJECT_DIR$/src/prozeman/DiffSelectScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/prozeman/HowToPlayScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/prozeman/TextButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prozeman/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prozeman/GameUIButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/GameUIButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/prozeman/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prozeman/MainScreenWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/MainScreenWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prozeman/pWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/prozeman/pWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612233346767</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="działające odmierzanie czasu">
+      <created>1612235661326</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1612235661326</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,7 +191,8 @@
     <MESSAGE value="wykrywanie zderzenia pacmana ze ścianami" />
     <MESSAGE value="duszki się poruszają" />
     <MESSAGE value="zmiana wczytywanych poziomów" />
-    <option name="LAST_COMMIT_MESSAGE" value="zmiana wczytywanych poziomów" />
+    <MESSAGE value="działające odmierzanie czasu" />
+    <option name="LAST_COMMIT_MESSAGE" value="działające odmierzanie czasu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

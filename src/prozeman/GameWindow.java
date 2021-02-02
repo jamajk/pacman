@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Random;
 
 public class GameWindow extends JPanel implements ActionListener {
-    private boolean difficulty;
+    private int difficulty;
     private boolean playing;
     private int lives;
     private int[][] map;
@@ -26,6 +26,7 @@ public class GameWindow extends JPanel implements ActionListener {
     private int level;
 
     private int pacSpeed;
+    private int ghostSpeed;
 
     private long startTime; //nanoseconds
     private long prevTime;
@@ -34,7 +35,8 @@ public class GameWindow extends JPanel implements ActionListener {
     /**
      * Konstruktor klasy GameWindow
      */
-    public GameWindow() {
+    public GameWindow(pWindow parent, int difficulty) {
+        this.difficulty = difficulty;
         setFocusable(true);
         requestFocusInWindow();
         elapsedTime = 0;
@@ -44,8 +46,7 @@ public class GameWindow extends JPanel implements ActionListener {
         playing = false;
         try {
             Config.loadConfig();
-            pacSpeed = Config.playerSpeed_easy;
-            lives = Config.numberOfLives_easy;
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,13 +55,40 @@ public class GameWindow extends JPanel implements ActionListener {
         setBackground(Color.darkGray);
         map = Config.maps.get(level);
         decodeMap();
+        int nGhosts;
+        switch (difficulty) {
+            case 1: //easy
+                pacSpeed = Config.playerSpeed_easy;
+                ghostSpeed = Config.ghostSpeed_easy;
+                lives = Config.numberOfLives_easy;
+                nGhosts = Config.numberOfGhosts_easy;
+                break;
+            case 2: //medium
+                pacSpeed = Config.playerSpeed_medium;
+                ghostSpeed = Config.ghostSpeed_medium;
+                lives = Config.numberOfLives_medium;
+                nGhosts = Config.numberOfGhosts_medium;
+                break;
+            case 3: //hard
+                pacSpeed = Config.playerSpeed_hardcore;
+                ghostSpeed = Config.ghostSpeed_hardcore;
+                lives = Config.numberOfLives_hardcore;
+                nGhosts = Config.numberOfGhosts_hardcore;
+                break;
+            default: //to nie powinno sie zdarzyć
+                pacSpeed = Config.playerSpeed_easy;
+                ghostSpeed = Config.ghostSpeed_easy;
+                lives = Config.numberOfLives_easy;
+                nGhosts = Config.numberOfGhosts_easy;
+        }
+
+
         pacman = new Pacman(cellSize);
-        ghosts = new Ghost[Config.numberOfGhosts_easy];
+        ghosts = new Ghost[nGhosts];
         for (int i = 0; i < ghosts.length; i++) {
             ghosts[i] = new Ghost(cellSize);
         }
         pacman.setDirection(Direction.STOP);
-        //difficulty easy
     }
 
     /**
@@ -155,7 +183,9 @@ public class GameWindow extends JPanel implements ActionListener {
 
     private void passedLevel() {
         pellets = 1;
-        if (!playing) {
+        if (level >= Config.numberOfLevels - 1) {
+            System.out.println("KONIEC GRY");
+        } else if (!playing) {
             level++;
             map = Config.maps.get(level);
             decodeMap();
@@ -170,6 +200,7 @@ public class GameWindow extends JPanel implements ActionListener {
         lives--;
         if (lives <= 0) {
             //you lost
+            System.out.println("KONIEC GRY");
             pause();
             return;
         }
@@ -193,7 +224,7 @@ public class GameWindow extends JPanel implements ActionListener {
 
     private void showMessage(Graphics2D g2d, String message) {
 
-        g2d.setFont(Config.font);
+        g2d.setFont(Config.fontLarge);
         g2d.setColor(Color.darkGray);
         g2d.fillRect(boardRectIncX + 150, boardRectIncY + 200, 300, 100);
         g2d.setColor(Color.yellow);
@@ -204,6 +235,7 @@ public class GameWindow extends JPanel implements ActionListener {
      * Metoda paintComponent(), tu odbywa się rysowanie graficznych elementów na ekranie
      * @param g
      */
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
@@ -287,7 +319,7 @@ public class GameWindow extends JPanel implements ActionListener {
             hx -= 35;
         }
         g2d.setColor(Color.WHITE);
-        g2d.setFont(Config.font);
+        g2d.setFont(Config.fontLarge);
         g2d.drawString("Lives:", hx - 50, hy + 25);
 
         //rysowanie czasu gry
@@ -310,7 +342,7 @@ public class GameWindow extends JPanel implements ActionListener {
      */
     private void moveGhost(Ghost ghost) {
         int move = new Random().nextInt(4) + 1;
-        int speed = Config.ghostSpeed_easy / 5;
+        int speed = ghostSpeed / 5;
         if (ghost.getDirection() == Direction.STOP) {
             ghost.start();
             switch(move) {
