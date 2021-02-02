@@ -45,6 +45,10 @@ public class Character extends Entity {
         }
     }
 
+    public void resetMovement() {
+        canMove = false;
+    }
+
     public void setDirection(Direction newDir) {
         this.direction = newDir;
     }

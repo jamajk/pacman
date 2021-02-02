@@ -8,7 +8,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class MainScreenWindow extends JPanel {
-    public MainScreenWindow() {
+    public MainScreenWindow(pWindow parent) {
 
         setBackground(Color.darkGray);
         try {
@@ -37,13 +37,13 @@ public class MainScreenWindow extends JPanel {
         GameUIButton exitButton = new GameUIButton("Exit");
         add(exitButton);
         add(Box.createVerticalStrut(20));
-        Window frame = (Window) SwingUtilities.getWindowAncestor(this);
+
+
         newGameButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("New Game");
-                //add(new GameWindow());
-
-                //frame.layout.next(frame.contentPane);
+                //parent.layout.next(parent.content);//layout.show(parent.content, "gameWindow");
+                parent.game();
             }
         });
 

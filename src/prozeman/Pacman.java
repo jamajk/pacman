@@ -18,10 +18,10 @@ public class Pacman extends Character {
                 image = Config.pacImageUp.getScaledInstance(size, size, 0);
                 break;
             case DOWN:
-                image = Config.pacImageDown.getScaledInstance(size, size, 0);
+                image = Config.pacImageDown.getScaledInstance(size, size, Image.SCALE_DEFAULT);
                 break;
             case LEFT:
-                image = Config.pacImageLeft.getScaledInstance(size, size, 0);
+                image = Config.pacImageLeft.getScaledInstance(size, size, Image.SCALE_DEFAULT);
                 break;
             case RIGHT:
                 image = Config.pacImageRight.getScaledInstance(size, size, 0);

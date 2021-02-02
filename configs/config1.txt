@@ -1,4 +1,4 @@
-playerspeed-e=30
+playerspeed-e=50
 playerspeed-m=20
 playerspeed-h=10
 ghostspeed-e=10

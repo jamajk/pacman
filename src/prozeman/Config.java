@@ -1,6 +1,7 @@
 package prozeman;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.util.Properties;
@@ -101,6 +102,16 @@ public class Config {
     static Image ghostImage;
 
     /**
+     * Zmienna przechowująca obrazek używany do wyświetlania żyć
+     */
+    static Image heartImage;
+
+    /**
+     * Zmienna przechowująca czcionkę używaną do wyświetlania napisów w grze
+     */
+    static Font font = new Font("Courier New", Font.BOLD, 24);
+
+    /**
      * Metoda pozwalająca wczytać do programu zmienne konfigurowalne w pliku "config.txt"
      */
     static void loadConfig() throws IOException {
@@ -141,6 +152,7 @@ public class Config {
             pacImageLeft = ImageIO.read(new FileInputStream("img/left.gif"));
             pacImageRight = ImageIO.read(new FileInputStream("img/right.gif"));
             ghostImage = ImageIO.read(new FileInputStream("img/ghost.gif"));
+            heartImage = ImageIO.read(new FileInputStream("img/heart.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

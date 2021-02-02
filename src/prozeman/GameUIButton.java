@@ -20,7 +20,7 @@ public class GameUIButton extends JButton {
 
         setBackground(Color.lightGray);
         setForeground(Color.white);
-        //setFont(Font.getFont("Courier New"));
+        setFont(Config.font);
         setBorderPainted(false);
     }
 }
