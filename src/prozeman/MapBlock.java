@@ -8,7 +8,7 @@ public class MapBlock extends Entity {
     private int gridY;
 
     enum Type {
-        EMPTY, WALL, POINT, GHOSTSPAWN, PACSPAWN;
+        EMPTY, WALL, POINT, GHOSTSPAWN, PACSPAWN, BONUS;
     }
 
     public MapBlock(int size, int type, int i, int j) {
@@ -28,6 +28,9 @@ public class MapBlock extends Entity {
                 break;
             case 4:
                 this.type = Type.PACSPAWN;
+                break;
+            case 5:
+                this.type = Type.BONUS;
                 break;
             default:
                 this.type = Type.EMPTY;
@@ -53,7 +56,7 @@ public class MapBlock extends Entity {
     }
 
     public void eatPoint() {
-        if (type == Type.POINT) {
+        if (type == Type.POINT || type == Type.BONUS) {
             type = Type.EMPTY;
         }
     }

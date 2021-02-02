@@ -1,11 +1,13 @@
 package prozeman;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Klasa okna (panelu) umożliwiającego wybór poziomu trudności rozgrywki
+ */
 public class DiffSelectScreen extends JPanel {
     public DiffSelectScreen(pWindow parent) {
 

@@ -3,7 +3,9 @@ package prozeman;
 import javax.swing.*;
 import java.awt.*;
 
-
+/**
+ * Klasa główna, jako jedyna instancja JFrame, która zawiera wszystkie nasze widoki (JPanele) i wyświetla je w jednym oknie
+ */
 public class pWindow extends JFrame {
     CardLayout layout = new CardLayout();
     JPanel content = new JPanel(layout);

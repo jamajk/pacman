@@ -9,9 +9,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Klasa wyświetlająca plansze i umożliwiająca rozgrywkę.
+ */
 public class GameWindow extends JPanel {
     private int difficulty;
     private boolean playing;
+    private boolean bonus;
     private int lives;
     private int[][] map;
     private MapBlock[][] mapDecoded;
@@ -143,12 +147,27 @@ public class GameWindow extends JPanel {
     }
 
     /**
-     * Metoda sprawdzająca, czy w miejscu w którym znajduje się pacman jest kulka do zjedzenia
+     * Metoda sprawdzająca, czy w miejscu w którym znajduje się pacman jest kulka do zjedzenia lub bonus.
+     * Jeśli gracz napotka na bonus, na okres pęciu sekund zwiększona zostanie jego szybkość oraz zapewniona będzie nieśmiertelność
      */
     public void checkEatenPoints() {
         int x = (int) Math.ceil((pacman.getCenterX() - boardRectIncX) / cellSize);
         int y = (int) Math.ceil((pacman.getCenterY() - boardRectIncY) / cellSize);
         if (mapDecoded[y][x].getType() == MapBlock.Type.POINT) {
+            mapDecoded[y][x].eatPoint();
+        } else if (mapDecoded[y][x].getType() == MapBlock.Type.BONUS) {
+            int oldSpeed = pacSpeed;
+            pacSpeed *= 2;//1.5;
+            bonus = true;
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    pacSpeed = oldSpeed;
+                    bonus = false;
+                }
+            };
+            ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+            executor.schedule(runnable, 10, TimeUnit.SECONDS);
             mapDecoded[y][x].eatPoint();
         }
     }
@@ -184,7 +203,6 @@ public class GameWindow extends JPanel {
                 return;
         }
         if (block.getType() == MapBlock.Type.WALL) {
-            //System.out.printf("%d %d wall, %d %d coords\n", block.getGridX(), block.getGridY(), x, y);
             if (isTouching(walker, block)) {
                 walker.setDirection(Direction.STOP);
                 walker.stop();
@@ -201,8 +219,10 @@ public class GameWindow extends JPanel {
                 moveGhost(ghosts[i]);
                 checkForWall(ghosts[i]);
                 if (isTouching(pacman, ghosts[i])) {
-                    pacman.stop();
-                    loseLife();
+                    if (!bonus) {
+                        pacman.stop();
+                        loseLife();
+                    }
                 }
                 if (pellets <= 0) {
                     playing = false;
@@ -236,17 +256,16 @@ public class GameWindow extends JPanel {
                     n_d = 100;
                     break;
                 case 2:
-                    n_d = 200;
+                    n_d = 300;
                     break;
                 case 3:
-                    n_d = 300;
+                    n_d = 1000;
                     break;
                 default:
                     n_d = 100;
                     break;
             }
-            finalScore = (lives * n_d) / (int) elapsedTime;
-            System.out.println("KONIEC GRY");
+            finalScore = (lives * n_d * Config.numberOfLevels) / (int) elapsedTime;
             parent.gameWon(finalScore);
         } else if (!playing) {
             level++;
@@ -360,6 +379,13 @@ public class GameWindow extends JPanel {
                         g2d.setColor(Color.white);
                         g2d.fillOval(x + (cellWidth / 2) - 4, y + (cellHeight / 2) - 4, 8, 8);
                         break;
+                    case BONUS:
+                        pts += 1;
+                        g2d.setColor(Color.black);
+                        g2d.fillRect(x, y, cellWidth, cellHeight);
+                        g2d.setColor(Color.red);
+                        g2d.fillOval(x + (cellWidth / 2) - 7, y + (cellHeight / 2) - 7, 14, 14);
+                        break;
                 }
                 mapDecoded[i][j].setCoords(x, y);
                 x += cellWidth;
@@ -404,6 +430,12 @@ public class GameWindow extends JPanel {
 
         //rysowanie numeru poziomu
         g2d.drawString("Level " + Integer.toString(level + 1), (screenWidth / 2) - 50, hy + 25);
+
+        //rysowanie wskaźnika bonusu
+        if (bonus) {
+            g2d.setColor(Color.red);
+            g2d.fillOval(30, hy + 11, 14, 14);
+        }
 
         Toolkit.getDefaultToolkit().sync();
         g2d.dispose();
