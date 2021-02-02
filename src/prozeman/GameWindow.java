@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.Random;
 
-public class GameWindow extends JPanel implements ActionListener {
+public class GameWindow extends JPanel /*implements ActionListener*/ {
     private int difficulty;
     private boolean playing;
     private int lives;
@@ -32,6 +32,8 @@ public class GameWindow extends JPanel implements ActionListener {
     private long prevTime;
     private long elapsedTime; //nanoseconds
 
+    private int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
+
     /**
      * Konstruktor klasy GameWindow
      */
@@ -50,7 +52,7 @@ public class GameWindow extends JPanel implements ActionListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        addKeyListener(new TAdapter());
+        //addKeyListener(new TAdapter());
         setFocusable(true);
         setBackground(Color.darkGray);
         map = Config.maps.get(level);
@@ -89,6 +91,24 @@ public class GameWindow extends JPanel implements ActionListener {
             ghosts[i] = new Ghost(cellSize);
         }
         pacman.setDirection(Direction.STOP);
+
+        this.getInputMap(IFW).put(KeyStroke.getKeyStroke("UP"), Direction.UP);
+        this.getInputMap(IFW).put(KeyStroke.getKeyStroke("DOWN"), Direction.DOWN);
+        this.getInputMap(IFW).put(KeyStroke.getKeyStroke("LEFT"), Direction.LEFT);
+        this.getInputMap(IFW).put(KeyStroke.getKeyStroke("RIGHT"), Direction.RIGHT);
+        this.getInputMap(IFW).put(KeyStroke.getKeyStroke("CONTROL"), Direction.STOP);
+        this.getInputMap(IFW).put(KeyStroke.getKeyStroke("SPACE"), "START");
+        this.getInputMap(IFW).put(KeyStroke.getKeyStroke("P"), "PAUSE");
+        this.getInputMap(IFW).put(KeyStroke.getKeyStroke("ESCAPE"), "PAUSE");
+
+        this.getActionMap().put(Direction.UP, new MoveAction(Direction.UP));
+        this.getActionMap().put(Direction.DOWN, new MoveAction(Direction.DOWN));
+        this.getActionMap().put(Direction.LEFT, new MoveAction(Direction.LEFT));
+        this.getActionMap().put(Direction.RIGHT, new MoveAction(Direction.RIGHT));
+        this.getActionMap().put(Direction.STOP, new MoveAction(Direction.STOP));
+        this.getActionMap().put("START", new MiscAction("START"));
+        this.getActionMap().put("PAUSE", new MiscAction("PAUSE"));
+
     }
 
     /**
@@ -379,7 +399,7 @@ public class GameWindow extends JPanel implements ActionListener {
         return false;
     }
 
-    class TAdapter extends KeyAdapter {
+  /*  class TAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
 
@@ -417,10 +437,53 @@ public class GameWindow extends JPanel implements ActionListener {
             }
             repaint();
         }
+    }*/
+
+    private class MoveAction extends AbstractAction {
+
+        Direction direction;
+
+        MoveAction(Direction direction) {
+            this.direction = direction;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) { ;
+            int key = e.getID();
+            System.out.println("lol");
+            if (playing) {
+                pacman.start();
+                pacman.setDirection(direction);
+            }
+            repaint();
+        }
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        repaint();
+    private class MiscAction extends AbstractAction {
+
+        String action;
+
+        MiscAction(String action) {
+            this.action = action;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) { ;
+            switch (action) {
+                case "START":
+                    if (!playing) {
+                        playing = true;
+                        startTime = System.nanoTime();
+                    }
+                    System.out.println("asd");
+                    break;
+                case "PAUSE":
+                    pause();
+                    break;
+                default:
+                    break;
+            }
+            repaint();
+        }
     }
 }
