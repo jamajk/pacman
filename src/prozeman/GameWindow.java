@@ -182,6 +182,7 @@ public class GameWindow extends JPanel {
         int y = (int) Math.ceil((walker.getCenterY() - boardRectIncY) / cellSize);
 
         if (x == 0 || y == 0 || x == 19 || y == 19) {
+            walker.resetMovement();
             return;
         }
 
@@ -253,16 +254,16 @@ public class GameWindow extends JPanel {
             int n_d;
             switch (difficulty) {
                 case 1:
-                    n_d = 100;
+                    n_d = 10000;
                     break;
                 case 2:
-                    n_d = 300;
+                    n_d = 30000;
                     break;
                 case 3:
-                    n_d = 1000;
+                    n_d = 100000;
                     break;
                 default:
-                    n_d = 100;
+                    n_d = 1000;
                     break;
             }
             finalScore = (lives * n_d * Config.numberOfLevels) / (int) elapsedTime;

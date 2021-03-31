@@ -1,8 +1,6 @@
 package prozeman;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 public class GameUIButton extends JButton {
